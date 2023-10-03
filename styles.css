@@ -16,8 +16,12 @@ html {
     margin: 200px auto;
 }
 
-.grid {
+.grid-item {
     width: 30px;
     height:30px;
     background-color: red;
+}
+
+.newColor {
+    background-color: black;
 }
