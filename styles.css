@@ -1,0 +1,23 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 490px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 5px solid black;
+    margin: 200px auto;
+}
+
+.grid {
+    width: 30px;
+    height:30px;
+    background-color: red;
+}
