@@ -10,6 +10,7 @@ html {
 
 #container {
     width: 490px;
+    height: 490px;
     display: flex;
     flex-wrap: wrap;
     border: 5px solid black;
@@ -17,9 +18,8 @@ html {
 }
 
 .grid-item {
-    width: 30px;
-    height:30px;
     background-color: red;
+    /* border: 1px solid greenyellow;; */
 }
 
 .newColor {
