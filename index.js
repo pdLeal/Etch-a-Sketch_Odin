@@ -71,11 +71,21 @@ function randomColor(evt) {
 
 }
 
-function changeListener() {
+function changeListener1() {
     for (const child of container.children) {
         child.removeEventListener("mouseover", mouseOver);
         child.addEventListener("mouseover", mouseOverRandom);
     }
 }
 const btnRandomColor = document.getElementById("btn-random-color");
-btnRandomColor.addEventListener("click", changeListener);
+btnRandomColor.addEventListener("click", changeListener1);
+
+function changeListener2() {
+    for (const child of container.children) {
+        child.removeEventListener("mouseover", mouseOverRandom);
+        child.addEventListener("mouseover", mouseOver);
+    }
+}
+
+const btnBackToBlack = document.getElementById("btn-back-black");
+btnBackToBlack.addEventListener("click", changeListener2)
