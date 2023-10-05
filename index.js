@@ -3,7 +3,7 @@ let mouseIsDown = false;
 document.addEventListener("mouseup", () => mouseIsDown = false);
 // 1º Section - Default grid, new grid and default color (black) 
 function changeColor(evt) {
-    evt.target.classList.add("newColor");
+    evt.target.style.backgroundColor = "black";
 }
 
 function mouseOver(evt) {
@@ -64,16 +64,16 @@ function randomColor(evt) {
 
     const style = window.getComputedStyle(evt.target);
 
-    if (style.backgroundColor !== "rgb(0, 0, 0)") {
-        evt.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-        evt.target.removeEventListener("mouseover", mouseOverRandom);
-    }
+    evt.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    evt.target.removeEventListener("mouseover", mouseOverRandom);
+
 
 }
 
 function changeListener1() {
     for (const child of container.children) {
         child.removeEventListener("mouseover", mouseOver);
+        child.removeEventListener("mouseover", mouseOverEraser);
         child.addEventListener("mouseover", mouseOverRandom);
     }
 }
@@ -83,9 +83,33 @@ btnRandomColor.addEventListener("click", changeListener1);
 function changeListener2() {
     for (const child of container.children) {
         child.removeEventListener("mouseover", mouseOverRandom);
+        child.removeEventListener("mouseover", mouseOverEraser);
         child.addEventListener("mouseover", mouseOver);
     }
 }
 
 const btnBackToBlack = document.getElementById("btn-back-black");
 btnBackToBlack.addEventListener("click", changeListener2)
+// End of 2º Section
+
+// 3º Section
+function mouseOverEraser(evt) {
+    if (mouseIsDown) {
+        return eraser(evt)
+    };
+}
+
+function eraser(evt) {
+    evt.target.style.backgroundColor = "white";
+}
+
+function changeListener3() {
+    for (const child of container.children) {
+        child.removeEventListener("mouseover", mouseOverRandom);
+        child.removeEventListener("mouseover", mouseOver);
+        child.addEventListener("mouseover", mouseOverEraser);
+    }
+}
+
+const btnEraser = document.getElementById("btn-eraser");
+btnEraser.addEventListener("mouseover", changeListener3);
