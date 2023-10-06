@@ -37,13 +37,13 @@ function newGrid() {
     }
 
     for (let i = 1; i <= (promp * promp); i++) {
-        const div = document.createElement("div");
-        div.classList.add("grid-item");
-        div.style.width = `${100 / promp}%`
-        div.style.height = `${100 / promp}%`
-        container.appendChild(div);
-        div.addEventListener("mousedown", () => mouseIsDown = true);
-        div.addEventListener("mouseover", mouseOver);
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");
+        gridItem.style.width = `${100 / promp}%`
+        gridItem.style.height = `${100 / promp}%`
+        container.appendChild(gridItem);
+        gridItem.addEventListener("mousedown", () => mouseIsDown = true);
+        gridItem.addEventListener("mouseover", mouseOver);
     }
 }
 const btnNewGrid = document.getElementById("btn-new-grid");
@@ -61,8 +61,6 @@ function randomColor(evt) {
     const randomR = Math.floor(Math.random() * 256);
     const randomG = Math.floor(Math.random() * 256);
     const randomB = Math.floor(Math.random() * 256);
-
-    const style = window.getComputedStyle(evt.target);
 
     evt.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
     evt.target.removeEventListener("mouseover", mouseOverRandom);
@@ -113,3 +111,11 @@ function changeListener3() {
 
 const btnEraser = document.getElementById("btn-eraser");
 btnEraser.addEventListener("mouseover", changeListener3);
+
+function clearCanvas() {
+    for (const child of container.children) {
+        child.style.backgroundColor = "white";
+    }
+}
+const btnClear = document.getElementById("btn-clear");
+btnClear.addEventListener("click", clearCanvas);
